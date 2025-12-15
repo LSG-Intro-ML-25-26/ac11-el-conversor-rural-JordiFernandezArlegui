@@ -1,0 +1,35 @@
+{
+    "transparency16": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true
+    },
+    "airport1": {
+        "id": "airport1",
+        "mimeType": "application/mkcd-tilemap",
+        "data": "MTAxMDAwMDkwMDA0MDUwNDA1MDQwNTA0MDUwNDA1MDQwNTA0MDUwNDA1MDEwMzAyMDEwMjAzMDIwMjAxMDIwMzAyMDMwMjAzMDIwMjA4MGMwOTAyMDEwMzAyMDIwMzAxMDIwMzAxMDIwMzAzMDcwNjA2MGMwOTAyMDEwMjAzMDIwMzAzMDIwMzAzMDIwYjBkMGQwZDBhMDMwMjAyMDgwOTAyMDEwMzAzMDEwMTAyMDEwMjAzMDIwMzAzMDEwNzA2MGMwYzA5MDIwMjAyMDMwMjA4MDkwMjAxMDMwMjBiMGQwZDA2MGUwMTAzMDIwMTAyMGIwYTAyMDMwMzAxMDIwMzAyMGIwYTAzMDIwMzAyMDIwMzAyMDMwMTAyMDMwMzAyMDEwMjAzMDIwMTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMA==",
+        "tileset": [
+            "myTiles.transparency16",
+            "sprites.castle.tileGrass2",
+            "sprites.castle.tileGrass1",
+            "sprites.castle.tileGrass3",
+            "sprites.castle.saplingOak",
+            "sprites.castle.saplingPine",
+            "sprites.castle.tilePath5",
+            "sprites.castle.tilePath4",
+            "sprites.castle.tilePath1",
+            "sprites.castle.tilePath3",
+            "sprites.castle.tilePath9",
+            "sprites.castle.tilePath7",
+            "sprites.castle.tilePath2",
+            "sprites.castle.tilePath8",
+            "sprites.castle.tilePath6"
+        ],
+        "displayName": "airport"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myTiles"
+    }
+}

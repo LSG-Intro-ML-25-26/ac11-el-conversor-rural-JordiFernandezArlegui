@@ -1,4 +1,4 @@
-// Auto-generated code. Do not edit.
+// Código generado automáticamente. No editar.
 namespace myImages {
 
     helpers._registerFactory("image", function(name: string) {
@@ -80,59 +80,6 @@ f f f c 3 c c c c 3 c f f f
 . . . e e f 6 6 6 6 f . . . 
 . . . . f f f f f f f . . . 
 . . . . . . . . f f f . . . 
-`];
-            case "nena-animation-left":
-            case "anim2":return [img`
-. . . . f f f f f . f f f . 
-. . . f f c c c c f f f f f 
-. . f c c c c c c b f f f f 
-. . f c c c c c c 3 c f f f 
-. f c c c c c c c c 3 3 f . 
-. f c c 4 c c c c c f f f . 
-. f f e 4 4 c c c f f f f . 
-. f f e 4 4 f b f 4 4 f f . 
-. . f f d d f 1 4 d 4 f . . 
-. . . f d d d d 4 f f f . . 
-. . . f e 4 4 4 e e f . . . 
-. . . f 3 3 3 e d d 4 . . . 
-. . . f 3 3 3 e d d e . . . 
-. . . f 6 6 6 f e e f . . . 
-. . . . f f f f f f . . . . 
-. . . . . . f f f . . . . . 
-`, img`
-. . . . . . . . . . . . . . 
-. . . . f f f f f . f f f . 
-. . . f f c c c c f f f f f 
-. . f c c c c c c b f f f f 
-. . f c c c c c c 3 c f f f 
-. f c c c c c c c c 3 3 f . 
-. f c c 4 c c c c c f f f . 
-. f f c 4 4 c c c f f f f . 
-. f f f 4 4 f b f 4 4 f f . 
-. . f f d d f 1 4 d 4 f . . 
-. . . f d d d e e f f f . . 
-. . . f e 4 e d d 4 f . . . 
-. . . f 3 3 e d d e f . . . 
-. . f f 6 6 f e e f f f . . 
-. . f f f f f f f f f f . . 
-. . . f f f . . . f f . . . 
-`, img`
-. . . . . . . . . . . . . . 
-. . . . f f f f f . f f f . 
-. . . f f c c c c f f f f f 
-. . f c c c c c c b f f f f 
-. . f c c c c c c 3 c f f f 
-. f c c c c c c c c 3 3 f . 
-. f c c 4 c c c c c f f f . 
-. f f c 4 4 c c c f f f f . 
-. f f f 4 4 f b f 4 4 f f . 
-. . f c d d f 1 4 d 4 f f . 
-. . . f d d d d 4 f f f . . 
-. . . f e 4 4 4 e d d 4 . . 
-. . . f 3 3 3 3 e d d e . . 
-. . f f 6 6 6 6 f e e f . . 
-. . f f f f f f f f f f . . 
-. . . f f f . . . f f . . . 
 `];
             case "nena-animation-up":
             case "anim3":return [img`
@@ -240,6 +187,112 @@ f f f c 3 c c c c c c f . .
 . . . . f f f f f f . . . . 
 . . . . . f f f . . . . . . 
 `];
+            case "nena-animation-left0":
+            case "anim5":return [img`
+. . . . f f f f f . f f f . 
+. . . f f c c c c f f f f f 
+. . f c c c c c c b f f f f 
+. . f c c c c c c 3 c f f f 
+. f c c c c c c c c 3 3 f . 
+. f c c 4 c c c c c f f f . 
+. f f e 4 4 c c c f f f f . 
+. f f e 4 4 f b f 4 4 f f . 
+. . f f d d f 1 4 d 4 f . . 
+. . . f d d d d 4 f f f . . 
+. . . f e 4 4 4 e e f . . . 
+. . . f 3 3 3 e d d 4 . . . 
+. . . f 3 3 3 e d d e . . . 
+. . . f 6 6 6 f e e f . . . 
+. . . . f f f f f f . . . . 
+. . . . . . f f f . . . . . 
+`, img`
+. . . . . . . . . . . . . . 
+. . . . f f f f f . f f f . 
+. . . f f c c c c f f f f f 
+. . f c c c c c c b f f f f 
+. . f c c c c c c 3 c f f f 
+. f c c c c c c c c 3 3 f . 
+. f c c 4 c c c c c f f f . 
+. f f c 4 4 c c c f f f f . 
+. f f f 4 4 f b f 4 4 f f . 
+. . f f d d f 1 4 d 4 f . . 
+. . . f d d d e e f f f . . 
+. . . f e 4 e d d 4 f . . . 
+. . . f 3 3 e d d e f . . . 
+. . f f 6 6 f e e f f f . . 
+. . f f f f f f f f f f . . 
+. . . f f f . . . f f . . . 
+`, img`
+. . . . . . . . . . . . . . 
+. . . . f f f f f . f f f . 
+. . . f f c c c c f f f f f 
+. . f c c c c c c b f f f f 
+. . f c c c c c c 3 c f f f 
+. f c c c c c c c c 3 3 f . 
+. f c c 4 c c c c c f f f . 
+. f f c 4 4 c c c f f f f . 
+. f f f 4 4 f b f 4 4 f f . 
+. . f c d d f 1 4 d 4 f f . 
+. . . f d d d d 4 f f f . . 
+. . . f e 4 4 4 e d d 4 . . 
+. . . f 3 3 3 3 e d d e . . 
+. . f f 6 6 6 6 f e e f . . 
+. . f f f f f f f f f f . . 
+. . . f f f . . . f f . . . 
+`];
+            case "nena-animation-left":
+            case "anim2":return [img`
+. . . . . . . . . . . . . . 
+. . . . f f f f f . f f f . 
+. . . f f c c c c f f f f f 
+. . f c c c c c c b f f f f 
+. . f c c c c c c 3 c f f f 
+. f c c c c c c c c 3 3 f . 
+. f c c 4 c c c c c f f f . 
+. f f c 4 4 c c c f f f f . 
+. f f f 4 4 f b f 4 4 f f . 
+. . f c d d f 1 4 d 4 f f . 
+. . . f d d d d 4 f f f . . 
+. . . f e 4 4 4 e d d 4 . . 
+. . . f 3 3 3 3 e d d e . . 
+. . f f 6 6 6 6 f e e f . . 
+. . f f f f f f f f f f . . 
+. . . f f f . . . f f . . . 
+`, img`
+. . . . . . . . . . . . . . 
+. . . . f f f f f . f f f . 
+. . . f f c c c c f f f f f 
+. . f c c c c c c b f f f f 
+. . f c c c c c c 3 c f f f 
+. f c c c c c c c c 3 3 f . 
+. f c c 4 c c c c c f f f . 
+. f f c 4 4 c c c f f f f . 
+. f f f 4 4 f b f 4 4 f f . 
+. . f f d d f 1 4 d 4 f . . 
+. . . f d d d e e f f f . . 
+. . . f e 4 e d d 4 f . . . 
+. . . f 3 3 e d d e f . . . 
+. . f f 6 6 f e e f f f . . 
+. . f f f f f f f f f f . . 
+. . . f f f . . . f f . . . 
+`, img`
+. . . . f f f f f . f f f . 
+. . . f f c c c c f f f f f 
+. . f c c c c c c b f f f f 
+. . f c c c c c c 3 c f f f 
+. f c c c c c c c c 3 3 f . 
+. f c c 4 c c c c c f f f . 
+. f f e 4 4 c c c f f f f . 
+. f f e 4 4 f b f 4 4 f f . 
+. . f f d d f 1 4 d 4 f . . 
+. . . f d d d d 4 f f f . . 
+. . . f e 4 4 4 e e f . . . 
+. . . f 3 3 3 e d d 4 . . . 
+. . . f 3 3 3 e d d e . . . 
+. . . f 6 6 6 f e e f . . . 
+. . . . f f f f f f . . . . 
+. . . . . . f f f . . . . . 
+`];
         }
         return null;
     })
@@ -252,4 +305,4 @@ f f f c 3 c c c c c c f . .
     })
 
 }
-// Auto-generated code. Do not edit.
+// Código generado automáticamente. No editar.
