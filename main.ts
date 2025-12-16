@@ -96,6 +96,7 @@ controller.right.onEvent(ControllerButtonEvent.Released, function () {
 function walkSound () {
     music.rest(music.beat(BeatFraction.Triplet))
     music.play(music.melodyPlayable(music.footstep), music.PlaybackMode.InBackground)
+    music.setVolume(255)
 }
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
     if (controller.right.isPressed()) {
@@ -189,17 +190,6 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
         )
     }
 })
-scene.onHitWall(SpriteKind.Player, function (sprite, location) {
-	
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC, function (sprite, otherSprite) {
-    if (controller.A.isPressed()) {
-        music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
-        game.showLongText("Hola! Quiero 2 GALLINAS", DialogLayout.Bottom)
-        music.play(music.melodyPlayable(music.powerDown), music.PlaybackMode.InBackground)
-        pause(100)
-    }
-})
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     if (controller.up.isPressed()) {
         if (controller.left.isPressed()) {
@@ -276,6 +266,11 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         )
     }
 })
+function setNPCLocation () {
+    tiles.placeOnTile(NPCs[0], tiles.getTileLocation(2, 1))
+    tiles.placeOnTile(NPCs[1], tiles.getTileLocation(12, 1))
+    tiles.placeOnTile(NPCs[2], tiles.getTileLocation(8, 6))
+}
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (controller.left.isPressed()) {
         if (controller.down.isPressed()) {
@@ -428,6 +423,26 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         )
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC, function (sprite2, otherSprite) {
+    if (controller.A.isPressed()) {
+        music.play(music.melodyPlayable(music.jumpUp), music.PlaybackMode.InBackground)
+        music.setVolume(120)
+        if (game.ask("Vols  " + "" + ("s? Tinc " + ""))) {
+        	
+        } else {
+        	
+        }
+        if (controller.B.isPressed()) {
+            game.showLongText("Oh... Una pena... Ens veiem!", DialogLayout.Bottom)
+            music.play(music.melodyPlayable(music.jumpDown), music.PlaybackMode.InBackground)
+            music.setVolume(120)
+            pause(100)
+        }
+        music.play(music.melodyPlayable(music.jumpDown), music.PlaybackMode.InBackground)
+        music.setVolume(120)
+        pause(100)
+    }
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (controller.down.isPressed()) {
         if (controller.left.isPressed()) {
@@ -504,6 +519,18 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         )
     }
 })
+function setNPCInventari () {
+    for (let index = 0; index < 3; index++) {
+        let NPC_inventari: string[] = []
+        if (0 == 0 % 1) {
+            NPC_inventari.push(producte._pickRandom())
+            NPC_inventari.push(convertToText(randint(1, 10)))
+        } else {
+            NPC_inventari.push("llenya")
+            NPC_inventari.push(convertToText(randint(1, 10)))
+        }
+    }
+}
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
     if (controller.up.isPressed()) {
         if (controller.left.isPressed()) {
@@ -722,9 +749,14 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
         )
     }
 })
+let producte: string[] = []
 let nena: Sprite = null
-music.play(music.createSong(hex`0078000408020700001c00010a006400f401640000040000000000000000000000000005000004360000000400011d08000c00011910001400011e14001800011918001c00011b1c002000011d20002400012028002c00011e30003400011d01001c000f05001202c102c20100040500280000006400280003140006020004180000000400012510001400012020002400012730003400012502001c000c960064006d019001000478002c010000640032000000000a060005060038003c00012903001c0001dc00690000045e0100040000000000000000000005640001040003060038004000012507001c00020a006400f401640000040000000000000000000000000000000003360000000400012008000c00011d10001400011b14001800011d18001c00011e1c002000012020002400012428002c00012230003400012008001c000e050046006603320000040a002d0000006400140001320002010002180000001000012910002000012720003000012a30003c00012909010e02026400000403780000040a000301000000640001c80000040100000000640001640000040100000000fa0004af00000401c80000040a00019600000414000501006400140005010000002c0104dc00000401fa0000040a0001c8000004140005d0076400140005d0070000c800029001f40105c201f4010a0005900114001400039001000005c201f4010500058403050032000584030000fa00049001000005c201f4010500058403c80032000584030500640005840300009001049001000005c201f4010500058403c80064000584030500c8000584030000f40105ac0d000404a00f00000a0004ac0d2003010004a00f0000280004ac0d9001010004a00f0000280002d00700040408070f0064000408070000c80003c800c8000e7d00c80019000e64000f0032000e78000000fa00032c01c8000ee100c80019000ec8000f0032000edc000000fa0003f401c8000ea901c80019000e90010f0032000ea4010000fa0001c8000004014b000000c800012c01000401c8000000c8000190010004012c010000c80002c800000404c8000f0064000496000000c80002c2010004045e010f006400042c010000640002c409000404c4096400960004f6090000f40102b80b000404b80b64002c0104f40b0000f401022003000004200300040a000420030000ea01029001000004900100040a000490010000900102d007000410d0076400960010d0070000c8003000000001000100040005000100100011000100140015000100200021000100240025000100300031000100340035000100`), music.PlaybackMode.LoopingInBackground)
-let npc1 = sprites.create(img`
+let NPCs: Sprite[] = []
+music.play(music.createSong(hex`
+            0078000408020700001c00010a006400f401640000040000000000000000000000000005000004360000000400011d08000c00011910001400011e14001800011918001c00011b1c002000011d20002400012028002c00011e30003400011d01001c000f05001202c102c20100040500280000006400280003140006020004180000000400012510001400012020002400012730003400012502001c000c960064006d019001000478002c010000640032000000000a060005060038003c00012903001c0001dc00690000045e0100040000000000000000000005640001040003060038004000012507001c00020a006400f401640000040000000000000000000000000000000003360000000400012008000c00011d10001400011b14001800011d18001c00011e1c002000012020002400012428002c00012230003400012008001c000e050046006603320000040a002d0000006400140001320002010002180000001000012910002000012720003000012a30003c00012909010e02026400000403780000040a000301000000640001c80000040100000000640001640000040100000000fa0004af00000401c80000040a00019600000414000501006400140005010000002c0104dc00000401fa0000040a0001c8000004140005d0076400140005d0070000c800029001f40105c201f4010a0005900114001400039001000005c201f4010500058403050032000584030000fa00049001000005c201f4010500058403c80032000584030500640005840300009001049001000005c201f4010500058403c80064000584030500c8000584030000f40105ac0d000404a00f00000a0004ac0d2003010004a00f0000280004ac0d9001010004a00f0000280002d00700040408070f0064000408070000c80003c800c8000e7d00c80019000e64000f0032000e78000000fa00032c01c8000ee100c80019000ec8000f0032000edc000000fa0003f401c8000ea901c80019000e90010f0032000ea4010000fa0001c8000004014b000000c800012c01000401c8000000c8000190010004012c010000c80002c800000404c8000f0064000496000000c80002c2010004045e010f006400042c010000640002c409000404c4096400960004f6090000f40102b80b000404b80b64002c0104f40b0000f401022003000004200300040a000420030000ea01029001000004900100040a000490010000900102d007000410d0076400960010d0070000c8003000000001000100040005000100100011000100140015000100200021000100240025000100300031000100340035000100
+            `), music.PlaybackMode.LoopingInBackground)
+music.setVolume(20)
+NPCs = [sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
@@ -741,7 +773,41 @@ let npc1 = sprites.create(img`
     . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
-    `, SpriteKind.NPC)
+    `, SpriteKind.NPC), sprites.create(img`
+    . . . . . . 5 . 5 . . . . . . . 
+    . . . . . f 5 5 5 f . . . . . . 
+    . . . . f 6 2 5 5 6 f . . . . . 
+    . . . f 6 6 6 6 1 6 6 f . . . . 
+    . . . f 6 6 6 6 6 1 6 f . . . . 
+    . . . f d f d 6 6 6 1 f . . . . 
+    . . . f d f d 6 6 6 6 f f . . . 
+    . . . f d 3 d d 6 6 6 f 6 f . . 
+    . . . . f d d d f f 6 f f . . . 
+    . . . . . f f 5 3 f 6 6 6 f . . 
+    . . . . f 5 3 3 f f f f f . . . 
+    . . . . f 3 3 f d f . . . . . . 
+    . . . . . f 3 f d f . . . . . . 
+    . . . . f 3 5 3 f d f . . . . . 
+    . . . . f f 3 3 f f . . . . . . 
+    . . . . . . f f f . . . . . . . 
+    `, SpriteKind.NPC), sprites.create(img`
+    . . . . . f f 4 4 f f . . . . . 
+    . . . . f 5 4 5 5 4 5 f . . . . 
+    . . . f e 3 3 3 3 3 3 e f . . . 
+    . . f b 3 3 3 3 3 3 3 3 b f . . 
+    . . f 3 3 3 3 3 3 3 3 3 3 f . . 
+    . f 3 3 3 3 3 3 3 3 3 3 3 3 f . 
+    . f b 3 3 3 3 3 3 3 3 3 3 b f . 
+    . f b b 3 3 3 3 3 3 3 3 b b f . 
+    . f b b b b b b b b b b b b f . 
+    f c b b b b b b b b b b b b c f 
+    f b b b b b b b b b b b b b b f 
+    . f c c b b b b b b b b c c f . 
+    . . e 4 c f f f f f f c 4 e . . 
+    . . e f b d b d b d b b f e . . 
+    . . . f f 1 d 1 d 1 d f f . . . 
+    . . . . . f f b b f f . . . . . 
+    `, SpriteKind.NPC)]
 nena = sprites.create(assets.image`nena-front`, SpriteKind.Player)
 controller.moveSprite(nena)
 scene.setBackgroundImage(img`
@@ -868,9 +934,9 @@ scene.setBackgroundImage(img`
     `)
 tiles.setTilemap(tilemap`airport`)
 scene.cameraFollowSprite(nena)
-nena.setStayInScreen(false)
-tiles.placeOnTile(npc1, tiles.getTileLocation(2, 1))
+setNPCLocation()
 tiles.placeOnTile(nena, tiles.getTileLocation(7, 2))
+nena.setStayInScreen(false)
 let preu = [
 6,
 2,
@@ -884,13 +950,14 @@ let cantitat = [
 12,
 1
 ]
-let producte = [
+producte = [
 "gallina",
 "patata",
 "cabra",
 "ou",
 "cavall"
 ]
+setNPCInventari()
 forever(function () {
     if (controller.down.isPressed()) {
         walkSound()
