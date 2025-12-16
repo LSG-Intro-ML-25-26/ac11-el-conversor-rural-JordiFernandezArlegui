@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const NPC = SpriteKind.create()
+}
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
     if (controller.left.isPressed()) {
         if (controller.up.isPressed()) {
@@ -184,6 +187,12 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
         0,
         false
         )
+    }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC, function (sprite, otherSprite) {
+    if (controller.A.isPressed()) {
+        game.showLongText("Hola! Quiero 2 GALLINAS", DialogLayout.Bottom)
+        pause(100)
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -713,6 +722,24 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
     }
 })
 let nena: Sprite = null
+let npc1 = sprites.create(img`
+    . . . . . . f f f f . . . . . . 
+    . . . . f f f 2 2 f f f . . . . 
+    . . . f f f 2 2 2 2 f f f . . . 
+    . . f f f e e e e e e f f f . . 
+    . . f f e 2 2 2 2 2 2 e e f . . 
+    . . f e 2 f f f f f f 2 e f . . 
+    . . f f f f e e e e f f f f . . 
+    . f f e f b f 4 4 f b f e f f . 
+    . f e e 4 1 f d d f 1 4 e e f . 
+    . . f e e d d d d d d e e f . . 
+    . . . f e e 4 4 4 4 e e f . . . 
+    . . e 4 f 2 2 2 2 2 2 f 4 e . . 
+    . . 4 d f 2 2 2 2 2 2 f d 4 . . 
+    . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
+    . . . . . f f f f f f . . . . . 
+    . . . . . f f . . f f . . . . . 
+    `, SpriteKind.NPC)
 nena = sprites.create(assets.image`nena-front`, SpriteKind.Player)
 controller.moveSprite(nena)
 scene.setBackgroundImage(img`
@@ -840,6 +867,7 @@ scene.setBackgroundImage(img`
 tiles.setTilemap(tilemap`airport`)
 scene.cameraFollowSprite(nena)
 nena.setStayInScreen(false)
+tiles.placeOnTile(npc1, tiles.getTileLocation(3, 2))
 let gallina = 6
 let _15_patata = 2
 let cabra = 5
