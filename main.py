@@ -1,139 +1,468 @@
 def on_right_released():
-    animation.run_image_animation(nena,
-        [img("""
-            . f f f . f f f f f . . . .
-            f f f f f c c c c f f . . .
-            f f f f b c c c c c c f . .
-            f f f c 3 c c c c c c f . .
-            . f 3 3 c c c c c c c c f .
-            . f f f c c c c c 4 c c f .
-            . f f f f c c c 4 4 e f f .
-            . f f 4 4 f b f 4 4 e f f .
-            . . f 4 d 4 1 f d d f f . .
-            . . f f f 4 d d d d f . . .
-            . . . f e e 4 4 4 e f . . .
-            . . . 4 d d e 3 3 3 f . . .
-            . . . e d d e 3 3 3 f . . .
-            . . . f e e f 6 6 6 f . . .
-            . . . . f f f f f f . . . .
-            . . . . . f f f . . . . . .
-            """)],
-        0,
-        False)
+    if controller.left.is_pressed():
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-left
+                """),
+            100,
+            True)
+    elif controller.up.is_pressed():
+        if controller.down.is_pressed():
+            animation.run_image_animation(nena,
+                [img("""
+                    . f f f . f f f f f . . . .
+                    f f f f f c c c c f f . . .
+                    f f f f b c c c c c c f . .
+                    f f f c 3 c c c c c c f . .
+                    . f 3 3 c c c c c c c c f .
+                    . f f f c c c c c 4 c c f .
+                    . f f f f c c c 4 4 e f f .
+                    . f f 4 4 f b f 4 4 e f f .
+                    . . f 4 d 4 1 f d d f f . .
+                    . . f f f 4 d d d d f . . .
+                    . . . f e e 4 4 4 e f . . .
+                    . . . 4 d d e 3 3 3 f . . .
+                    . . . e d d e 3 3 3 f . . .
+                    . . . f e e f 6 6 6 f . . .
+                    . . . . f f f f f f . . . .
+                    . . . . . f f f . . . . . .
+                    """)],
+                0,
+                True)
+        else:
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-up
+                    """),
+                100,
+                True)
+    elif controller.down.is_pressed():
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-down
+                """),
+            100,
+            True)
+    else:
+        animation.run_image_animation(nena,
+            [img("""
+                . f f f . f f f f f . . . .
+                f f f f f c c c c f f . . .
+                f f f f b c c c c c c f . .
+                f f f c 3 c c c c c c f . .
+                . f 3 3 c c c c c c c c f .
+                . f f f c c c c c 4 c c f .
+                . f f f f c c c 4 4 e f f .
+                . f f 4 4 f b f 4 4 e f f .
+                . . f 4 d 4 1 f d d f f . .
+                . . f f f 4 d d d d f . . .
+                . . . f e e 4 4 4 e f . . .
+                . . . 4 d d e 3 3 3 f . . .
+                . . . e d d e 3 3 3 f . . .
+                . . . f e e f 6 6 6 f . . .
+                . . . . f f f f f f . . . .
+                . . . . . f f f . . . . . .
+                """)],
+            0,
+            True)
 controller.right.on_event(ControllerButtonEvent.RELEASED, on_right_released)
 
 def on_left_released():
-    animation.run_image_animation(nena,
-        [img("""
-            . . . . f f f f f . f f f .
-            . . . f f c c c c f f f f f
-            . . f c c c c c c b f f f f
-            . . f c c c c c c 3 c f f f
-            . f c c c c c c c c 3 3 f .
-            . f c c 4 c c c c c f f f .
-            . f f e 4 4 c c c f f f f .
-            . f f e 4 4 f b f 4 4 f f .
-            . . f f d d f 1 4 d 4 f . .
-            . . . f d d d d 4 f f f . .
-            . . . f e 4 4 4 e e f . . .
-            . . . f 3 3 3 e d d 4 . . .
-            . . . f 3 3 3 e d d e . . .
-            . . . f 6 6 6 f e e f . . .
-            . . . . f f f f f f . . . .
-            . . . . . . f f f . . . . .
-            """)],
-        0,
-        False)
+    if controller.right.is_pressed():
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-right
+                """),
+            100,
+            True)
+    elif controller.up.is_pressed():
+        if controller.down.is_pressed():
+            animation.run_image_animation(nena,
+                [img("""
+                    . . . . f f f f f . f f f .
+                    . . . f f c c c c f f f f f
+                    . . f c c c c c c b f f f f
+                    . . f c c c c c c 3 c f f f
+                    . f c c c c c c c c 3 3 f .
+                    . f c c 4 c c c c c f f f .
+                    . f f e 4 4 c c c f f f f .
+                    . f f e 4 4 f b f 4 4 f f .
+                    . . f f d d f 1 4 d 4 f . .
+                    . . . f d d d d 4 f f f . .
+                    . . . f e 4 4 4 e e f . . .
+                    . . . f 3 3 3 e d d 4 . . .
+                    . . . f 3 3 3 e d d e . . .
+                    . . . f 6 6 6 f e e f . . .
+                    . . . . f f f f f f . . . .
+                    . . . . . . f f f . . . . .
+                    """)],
+                0,
+                True)
+        else:
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-up
+                    """),
+                100,
+                True)
+    elif controller.down.is_pressed():
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-down
+                """),
+            100,
+            True)
+    else:
+        animation.run_image_animation(nena,
+            [img("""
+                . . . . f f f f f . f f f .
+                . . . f f c c c c f f f f f
+                . . f c c c c c c b f f f f
+                . . f c c c c c c 3 c f f f
+                . f c c c c c c c c 3 3 f .
+                . f c c 4 c c c c c f f f .
+                . f f e 4 4 c c c f f f f .
+                . f f e 4 4 f b f 4 4 f f .
+                . . f f d d f 1 4 d 4 f . .
+                . . . f d d d d 4 f f f . .
+                . . . f e 4 4 4 e e f . . .
+                . . . f 3 3 3 e d d 4 . . .
+                . . . f 3 3 3 e d d e . . .
+                . . . f 6 6 6 f e e f . . .
+                . . . . f f f f f f . . . .
+                . . . . . . f f f . . . . .
+                """)],
+            0,
+            True)
 controller.left.on_event(ControllerButtonEvent.RELEASED, on_left_released)
 
 def on_down_pressed():
-    animation.stop_animation(animation.AnimationTypes.ALL, nena)
-    animation.run_image_animation(nena,
-        assets.animation("""
-            nena-animation-down
-            """),
-        100,
-        True)
+    if controller.up.is_pressed():
+        if controller.left.is_pressed():
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-left
+                    """),
+                100,
+                True)
+        elif controller.right.is_pressed():
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-right
+                    """),
+                100,
+                True)
+        else:
+            animation.run_image_animation(nena,
+                [img("""
+                    . f f f . f f f f . f f f .
+                    f f f f f c c c c f f f f f
+                    f f f f b c c c c b f f f f
+                    f f f c 3 c c c c 3 c f f f
+                    . f 3 3 c c c c c c 3 3 f .
+                    . f c c c c c c c c c c f .
+                    . f f c c c c c c c c f f .
+                    . f f f c c c c c c f f f .
+                    . f f f f f f f f f f f f .
+                    . . f f f f f f f f f f . .
+                    . . e f f f f f f f f e . .
+                    . e 4 f f f f f f f f 4 e .
+                    . 4 d f 3 3 3 3 3 3 c d 4 .
+                    . 4 4 f 6 6 6 6 6 6 f 4 4 .
+                    . . . . f f f f f f . . . .
+                    . . . . f f . . f f . . . .
+                    """)],
+                0,
+                True)
+    else:
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-down
+                """),
+            100,
+            True)
 controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
 
 def on_right_pressed():
-    animation.stop_animation(animation.AnimationTypes.ALL, nena)
-    animation.run_image_animation(nena,
-        assets.animation("""
-            nena-animation-right
-            """),
-        100,
-        True)
+    if controller.left.is_pressed():
+        if controller.up.is_pressed():
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-up
+                    """),
+                100,
+                True)
+        elif controller.down.is_pressed():
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-down
+                    """),
+                100,
+                True)
+        else:
+            animation.run_image_animation(nena,
+                [img("""
+                    . . . . f f f f f . f f f .
+                    . . . f f c c c c f f f f f
+                    . . f c c c c c c b f f f f
+                    . . f c c c c c c 3 c f f f
+                    . f c c c c c c c c 3 3 f .
+                    . f c c 4 c c c c c f f f .
+                    . f f e 4 4 c c c f f f f .
+                    . f f e 4 4 f b f 4 4 f f .
+                    . . f f d d f 1 4 d 4 f . .
+                    . . . f d d d d 4 f f f . .
+                    . . . f e 4 4 4 e e f . . .
+                    . . . f 3 3 3 e d d 4 . . .
+                    . . . f 3 3 3 e d d e . . .
+                    . . . f 6 6 6 f e e f . . .
+                    . . . . f f f f f f . . . .
+                    . . . . . . f f f . . . . .
+                    """)],
+                0,
+                True)
+    else:
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-right
+                """),
+            100,
+            True)
 controller.right.on_event(ControllerButtonEvent.PRESSED, on_right_pressed)
 
 def on_left_pressed():
-    animation.stop_animation(animation.AnimationTypes.ALL, nena)
-    animation.run_image_animation(nena,
-        assets.animation("""
-            nena-animation-left
-            """),
-        100,
-        True)
+    if controller.right.is_pressed():
+        if controller.up.is_pressed():
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-up
+                    """),
+                100,
+                True)
+        elif controller.down.is_pressed():
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-down
+                    """),
+                100,
+                True)
+        else:
+            animation.run_image_animation(nena,
+                [img("""
+                    . f f f . f f f f f . . . .
+                    f f f f f c c c c f f . . .
+                    f f f f b c c c c c c f . .
+                    f f f c 3 c c c c c c f . .
+                    . f 3 3 c c c c c c c c f .
+                    . f f f c c c c c 4 c c f .
+                    . f f f f c c c 4 4 e f f .
+                    . f f 4 4 f b f 4 4 e f f .
+                    . . f 4 d 4 1 f d d f f . .
+                    . . f f f 4 d d d d f . . .
+                    . . . f e e 4 4 4 e f . . .
+                    . . . 4 d d e 3 3 3 f . . .
+                    . . . e d d e 3 3 3 f . . .
+                    . . . f e e f 6 6 6 f . . .
+                    . . . . f f f f f f . . . .
+                    . . . . . f f f . . . . . .
+                    """)],
+                0,
+                True)
+    else:
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-left
+                """),
+            100,
+            True)
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
 def on_up_pressed():
-    animation.stop_animation(animation.AnimationTypes.ALL, nena)
-    animation.run_image_animation(nena,
-        assets.animation("""
-            nena-animation-up
-            """),
-        100,
-        True)
+    if controller.down.is_pressed():
+        if controller.left.is_pressed():
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-left
+                    """),
+                100,
+                True)
+        elif controller.right.is_pressed():
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-right
+                    """),
+                100,
+                True)
+        else:
+            animation.run_image_animation(nena,
+                [img("""
+                    . f f f . f f f f . f f f .
+                    f f f f f c c c c f f f f f
+                    f f f f b c c c c b f f f f
+                    f f f c 3 c c c c 3 c f f f
+                    . f 3 3 c c c c c c 3 3 f .
+                    . f c c c c 4 4 c c c c f .
+                    . f f c c 4 4 4 4 c c f f .
+                    . f f f b f 4 4 f b f f f .
+                    . f f 4 1 f d d f 1 4 f f .
+                    . . f f d d d d d d f f . .
+                    . . e f e 4 4 4 4 e f e . .
+                    . e 4 f b 3 3 3 3 b f 4 e .
+                    . 4 d f 3 3 3 3 3 3 c d 4 .
+                    . 4 4 f 6 6 6 6 6 6 f 4 4 .
+                    . . . . f f f f f f . . . .
+                    . . . . f f . . f f . . . .
+                    """)],
+                0,
+                True)
+    else:
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-up
+                """),
+            100,
+            True)
 controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
 
 def on_down_released():
-    animation.run_image_animation(nena,
-        [img("""
-            . f f f . f f f f . f f f .
-            f f f f f c c c c f f f f f
-            f f f f b c c c c b f f f f
-            f f f c 3 c c c c 3 c f f f
-            . f 3 3 c c c c c c 3 3 f .
-            . f c c c c 4 4 c c c c f .
-            . f f c c 4 4 4 4 c c f f .
-            . f f f b f 4 4 f b f f f .
-            . f f 4 1 f d d f 1 4 f f .
-            . . f f d d d d d d f f . .
-            . . e f e 4 4 4 4 e f e . .
-            . e 4 f b 3 3 3 3 b f 4 e .
-            . 4 d f 3 3 3 3 3 3 c d 4 .
-            . 4 4 f 6 6 6 6 6 6 f 4 4 .
-            . . . . f f f f f f . . . .
-            . . . . f f . . f f . . . .
-            """)],
-        0,
-        False)
+    if controller.left.is_pressed():
+        if controller.right.is_pressed():
+            animation.run_image_animation(nena,
+                [img("""
+                    . f f f . f f f f . f f f .
+                    f f f f f c c c c f f f f f
+                    f f f f b c c c c b f f f f
+                    f f f c 3 c c c c 3 c f f f
+                    . f 3 3 c c c c c c 3 3 f .
+                    . f c c c c 4 4 c c c c f .
+                    . f f c c 4 4 4 4 c c f f .
+                    . f f f b f 4 4 f b f f f .
+                    . f f 4 1 f d d f 1 4 f f .
+                    . . f f d d d d d d f f . .
+                    . . e f e 4 4 4 4 e f e . .
+                    . e 4 f b 3 3 3 3 b f 4 e .
+                    . 4 d f 3 3 3 3 3 3 c d 4 .
+                    . 4 4 f 6 6 6 6 6 6 f 4 4 .
+                    . . . . f f f f f f . . . .
+                    . . . . f f . . f f . . . .
+                    """)],
+                0,
+                True)
+        else:
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-left
+                    """),
+                100,
+                True)
+    elif controller.up.is_pressed():
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-up
+                """),
+            100,
+            True)
+    elif controller.right.is_pressed():
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-right
+                """),
+            100,
+            True)
+    else:
+        animation.run_image_animation(nena,
+            [img("""
+                . f f f . f f f f . f f f .
+                f f f f f c c c c f f f f f
+                f f f f b c c c c b f f f f
+                f f f c 3 c c c c 3 c f f f
+                . f 3 3 c c c c c c 3 3 f .
+                . f c c c c 4 4 c c c c f .
+                . f f c c 4 4 4 4 c c f f .
+                . f f f b f 4 4 f b f f f .
+                . f f 4 1 f d d f 1 4 f f .
+                . . f f d d d d d d f f . .
+                . . e f e 4 4 4 4 e f e . .
+                . e 4 f b 3 3 3 3 b f 4 e .
+                . 4 d f 3 3 3 3 3 3 c d 4 .
+                . 4 4 f 6 6 6 6 6 6 f 4 4 .
+                . . . . f f f f f f . . . .
+                . . . . f f . . f f . . . .
+                """)],
+            0,
+            True)
 controller.down.on_event(ControllerButtonEvent.RELEASED, on_down_released)
 
 def on_up_released():
-    animation.run_image_animation(nena,
-        [img("""
-            . f f f . f f f f . f f f .
-            f f f f f c c c c f f f f f
-            f f f f b c c c c b f f f f
-            f f f c 3 c c c c 3 c f f f
-            . f 3 3 c c c c c c 3 3 f .
-            . f c c c c c c c c c c f .
-            . f f c c c c c c c c f f .
-            . f f f c c c c c c f f f .
-            . f f f f f f f f f f f f .
-            . . f f f f f f f f f f . .
-            . . e f f f f f f f f e . .
-            . e 4 f f f f f f f f 4 e .
-            . 4 d f 3 3 3 3 3 3 c d 4 .
-            . 4 4 f 6 6 6 6 6 6 f 4 4 .
-            . . . . f f f f f f . . . .
-            . . . . f f . . f f . . . .
-            """)],
-        0,
-        False)
+    if controller.left.is_pressed():
+        if controller.right.is_pressed():
+            animation.run_image_animation(nena,
+                [img("""
+                    . f f f . f f f f . f f f .
+                    f f f f f c c c c f f f f f
+                    f f f f b c c c c b f f f f
+                    f f f c 3 c c c c 3 c f f f
+                    . f 3 3 c c c c c c 3 3 f .
+                    . f c c c c c c c c c c f .
+                    . f f c c c c c c c c f f .
+                    . f f f c c c c c c f f f .
+                    . f f f f f f f f f f f f .
+                    . . f f f f f f f f f f . .
+                    . . e f f f f f f f f e . .
+                    . e 4 f f f f f f f f 4 e .
+                    . 4 d f 3 3 3 3 3 3 c d 4 .
+                    . 4 4 f 6 6 6 6 6 6 f 4 4 .
+                    . . . . f f f f f f . . . .
+                    . . . . f f . . f f . . . .
+                    """)],
+                0,
+                True)
+        else:
+            animation.run_image_animation(nena,
+                assets.animation("""
+                    nena-animation-left
+                    """),
+                100,
+                True)
+    elif controller.down.is_pressed():
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-down
+                """),
+            100,
+            True)
+    elif controller.right.is_pressed():
+        animation.run_image_animation(nena,
+            assets.animation("""
+                nena-animation-right
+                """),
+            100,
+            True)
+    else:
+        animation.run_image_animation(nena,
+            [img("""
+                . f f f . f f f f . f f f .
+                f f f f f c c c c f f f f f
+                f f f f b c c c c b f f f f
+                f f f c 3 c c c c 3 c f f f
+                . f 3 3 c c c c c c 3 3 f .
+                . f c c c c c c c c c c f .
+                . f f c c c c c c c c f f .
+                . f f f c c c c c c f f f .
+                . f f f f f f f f f f f f .
+                . . f f f f f f f f f f . .
+                . . e f f f f f f f f e . .
+                . e 4 f f f f f f f f 4 e .
+                . 4 d f 3 3 3 3 3 3 c d 4 .
+                . 4 4 f 6 6 6 6 6 6 f 4 4 .
+                . . . . f f f f f f . . . .
+                . . . . f f . . f f . . . .
+                """)],
+            0,
+            True)
 controller.up.on_event(ControllerButtonEvent.RELEASED, on_up_released)
 
+_12_ous = 0
 nena: Sprite = None
 nena = sprites.create(assets.image("""
     nena-front
@@ -264,7 +593,10 @@ scene.set_background_image(img("""
 tiles.set_tilemap(tilemap("""
     airport
     """))
-nena.set_stay_in_screen(True)
+scene.camera_follow_sprite(nena)
+nena.set_stay_in_screen(False)
+comercio = [3, 5]
+
 gallina = 6
 _15_patata = 2
 cabra = 5
