@@ -1,55 +1,72 @@
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
-    animation.runImageAnimation(
-    nena,
-    [img`
-        . f f f . f f f f f . . . . 
-        f f f f f c c c c f f . . . 
-        f f f f b c c c c c c f . . 
-        f f f c 3 c c c c c c f . . 
-        . f 3 3 c c c c c c c c f . 
-        . f f f c c c c c 4 c c f . 
-        . f f f f c c c 4 4 e f f . 
-        . f f 4 4 f b f 4 4 e f f . 
-        . . f 4 d 4 1 f d d f f . . 
-        . . f f f 4 d d d d f . . . 
-        . . . f e e 4 4 4 e f . . . 
-        . . . 4 d d e 3 3 3 f . . . 
-        . . . e d d e 3 3 3 f . . . 
-        . . . f e e f 6 6 6 f . . . 
-        . . . . f f f f f f . . . . 
-        . . . . . f f f . . . . . . 
-        `],
-    100,
-    false
-    )
+    if (controller.left.isPressed()) {
+        animation.runImageAnimation(
+        nena,
+        assets.animation`nena-animation-left`,
+        100,
+        true
+        )
+    } else {
+        animation.runImageAnimation(
+        nena,
+        [img`
+            . f f f . f f f f f . . . . 
+            f f f f f c c c c f f . . . 
+            f f f f b c c c c c c f . . 
+            f f f c 3 c c c c c c f . . 
+            . f 3 3 c c c c c c c c f . 
+            . f f f c c c c c 4 c c f . 
+            . f f f f c c c 4 4 e f f . 
+            . f f 4 4 f b f 4 4 e f f . 
+            . . f 4 d 4 1 f d d f f . . 
+            . . f f f 4 d d d d f . . . 
+            . . . f e e 4 4 4 e f . . . 
+            . . . 4 d d e 3 3 3 f . . . 
+            . . . e d d e 3 3 3 f . . . 
+            . . . f e e f 6 6 6 f . . . 
+            . . . . f f f f f f . . . . 
+            . . . . . f f f . . . . . . 
+            `],
+        0,
+        true
+        )
+    }
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
-    animation.runImageAnimation(
-    nena,
-    [img`
-        . . . . f f f f f . f f f . 
-        . . . f f c c c c f f f f f 
-        . . f c c c c c c b f f f f 
-        . . f c c c c c c 3 c f f f 
-        . f c c c c c c c c 3 3 f . 
-        . f c c 4 c c c c c f f f . 
-        . f f e 4 4 c c c f f f f . 
-        . f f e 4 4 f b f 4 4 f f . 
-        . . f f d d f 1 4 d 4 f . . 
-        . . . f d d d d 4 f f f . . 
-        . . . f e 4 4 4 e e f . . . 
-        . . . f 3 3 3 e d d 4 . . . 
-        . . . f 3 3 3 e d d e . . . 
-        . . . f 6 6 6 f e e f . . . 
-        . . . . f f f f f f . . . . 
-        . . . . . . f f f . . . . . 
-        `],
-    100,
-    false
-    )
+    if (controller.right.isPressed()) {
+        animation.runImageAnimation(
+        nena,
+        assets.animation`nena-animation-right`,
+        100,
+        true
+        )
+    } else {
+        animation.runImageAnimation(
+        nena,
+        [img`
+            . . . . f f f f f . f f f . 
+            . . . f f c c c c f f f f f 
+            . . f c c c c c c b f f f f 
+            . . f c c c c c c 3 c f f f 
+            . f c c c c c c c c 3 3 f . 
+            . f c c 4 c c c c c f f f . 
+            . f f e 4 4 c c c f f f f . 
+            . f f e 4 4 f b f 4 4 f f . 
+            . . f f d d f 1 4 d 4 f . . 
+            . . . f d d d d 4 f f f . . 
+            . . . f e 4 4 4 e e f . . . 
+            . . . f 3 3 3 e d d 4 . . . 
+            . . . f 3 3 3 e d d e . . . 
+            . . . f 6 6 6 f e e f . . . 
+            . . . . f f f f f f . . . . 
+            . . . . . . f f f . . . . . 
+            `],
+        0,
+        true
+        )
+    }
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, nena)
     animation.runImageAnimation(
     nena,
     assets.animation`nena-animation-down`,
@@ -58,7 +75,6 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, nena)
     animation.runImageAnimation(
     nena,
     assets.animation`nena-animation-right`,
@@ -67,7 +83,6 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, nena)
     animation.runImageAnimation(
     nena,
     assets.animation`nena-animation-left`,
@@ -76,7 +91,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, nena)
     animation.runImageAnimation(
     nena,
     assets.animation`nena-animation-up`,
@@ -105,8 +119,8 @@ controller.down.onEvent(ControllerButtonEvent.Released, function () {
         . . . . f f f f f f . . . . 
         . . . . f f . . f f . . . . 
         `],
-    100,
-    false
+    0,
+    true
     )
 })
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
@@ -130,8 +144,8 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
         . . . . f f f f f f . . . . 
         . . . . f f . . f f . . . . 
         `],
-    100,
-    false
+    0,
+    true
     )
 })
 let nena: Sprite = null
@@ -260,6 +274,7 @@ scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     `)
 tiles.setTilemap(tilemap`airport`)
+scene.cameraFollowSprite(nena)
 nena.setStayInScreen(true)
 let gallina = 6
 let _15_patata = 2
