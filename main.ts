@@ -267,7 +267,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function setNPCLocation () {
-    tiles.placeOnTile(NPCs[0], tiles.getTileLocation(1, 1))
+    tiles.placeOnTile(NPCs[0], tiles.getTileLocation(2, 1))
     tiles.placeOnTile(NPCs[1], tiles.getTileLocation(11, 1))
     tiles.placeOnTile(NPCs[2], tiles.getTileLocation(7, 6))
 }
@@ -424,22 +424,28 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC, function (sprite2, otherSprite) {
+    if (nena.overlapsWith(NPCs[0])) {
+        multiplicador_array = 0
+    } else {
+        if (nena.overlapsWith(NPCs[1])) {
+            multiplicador_array = 1
+        } else {
+            multiplicador_array = 2
+        }
+    }
     if (controller.A.isPressed()) {
         music.play(music.melodyPlayable(music.jumpUp), music.PlaybackMode.InBackground)
         music.setVolume(120)
-        if (game.ask("Vols  " + "" + ("s? Tinc " + ""))) {
+        if (game.ask("Vols  " + NPC_inventari[2 * multiplicador_array] + ("? Tinc " + NPC_inventari[2 * multiplicador_array + 1]))) {
         	
         } else {
         	
         }
         if (controller.B.isPressed()) {
-            game.showLongText("Oh... Una pena... Ens veiem!", DialogLayout.Bottom)
+            game.showLongText("Oh... Una pena...\\nEns veiem!", DialogLayout.Bottom)
             music.play(music.melodyPlayable(music.jumpDown), music.PlaybackMode.InBackground)
             music.setVolume(120)
-            pause(100)
         }
-        music.play(music.melodyPlayable(music.jumpDown), music.PlaybackMode.InBackground)
-        music.setVolume(120)
         pause(100)
     }
 })
@@ -520,8 +526,8 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function setNPCInventari () {
+    lista = 0
     for (let index = 0; index < 3; index++) {
-        let NPC_inventari: string[] = []
         if (0 == 0 % 1) {
             NPC_inventari.push(producte._pickRandom())
             NPC_inventari.push(convertToText(randint(1, 10)))
@@ -530,6 +536,7 @@ function setNPCInventari () {
             NPC_inventari.push(convertToText(randint(1, 10)))
         }
     }
+    return NPC_inventari
 }
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
     if (controller.up.isPressed()) {
@@ -749,6 +756,9 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
         )
     }
 })
+let lista = 0
+let multiplicador_array = 0
+let NPC_inventari: string[] = []
 let producte: string[] = []
 let nena: Sprite = null
 let NPCs: Sprite[] = []
@@ -951,13 +961,13 @@ let cantitat = [
 1
 ]
 producte = [
-"gallina",
-"patata",
-"cabra",
-"ou",
-"cavall"
+"gallines",
+"patates",
+"cabres",
+"ous",
+"cavalls"
 ]
-setNPCInventari()
+NPC_inventari = setNPCInventari()
 forever(function () {
     if (controller.down.isPressed()) {
         walkSound()

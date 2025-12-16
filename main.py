@@ -250,8 +250,8 @@ controller.down.on_event(ControllerButtonEvent.PRESSED, on_down_pressed)
 
 def setNPCLocation():
     tiles.place_on_tile(NPCs[0], tiles.get_tile_location(2, 1))
-    tiles.place_on_tile(NPCs[1], tiles.get_tile_location(12, 1))
-    tiles.place_on_tile(NPCs[2], tiles.get_tile_location(8, 6))
+    tiles.place_on_tile(NPCs[1], tiles.get_tile_location(11, 1))
+    tiles.place_on_tile(NPCs[2], tiles.get_tile_location(7, 6))
 
 def on_right_pressed():
     if controller.left.is_pressed():
@@ -483,10 +483,10 @@ def on_up_pressed():
             100,
             True)
 controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
+NPC_inventari: List[str] = []
 
 def setNPCInventari():
     for index in range(3):
-        NPC_inventari: List[str] = []
         if 0 == 0 % 1:
             NPC_inventari.append(producte._pick_random())
             NPC_inventari.append(convert_to_text(randint(1, 10)))
@@ -890,7 +890,7 @@ tiles.set_tilemap(tilemap("""
     """))
 scene.camera_follow_sprite(nena)
 setNPCLocation()
-tiles.place_on_tile(nena, tiles.get_tile_location(7, 2))
+tiles.place_on_tile(nena, tiles.get_tile_location(6, 2))
 nena.set_stay_in_screen(False)
 preu = [6, 2, 5, 3, 12]
 cantitat = [1, 1.5, 12, 1]
