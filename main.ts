@@ -267,9 +267,9 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function setNPCLocation () {
-    tiles.placeOnTile(NPCs[0], tiles.getTileLocation(2, 1))
-    tiles.placeOnTile(NPCs[1], tiles.getTileLocation(12, 1))
-    tiles.placeOnTile(NPCs[2], tiles.getTileLocation(8, 6))
+    tiles.placeOnTile(NPCs[0], tiles.getTileLocation(1, 1))
+    tiles.placeOnTile(NPCs[1], tiles.getTileLocation(11, 1))
+    tiles.placeOnTile(NPCs[2], tiles.getTileLocation(7, 6))
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (controller.left.isPressed()) {
@@ -932,10 +932,10 @@ scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     `)
-tiles.setTilemap(tilemap`airport`)
+tiles.setTilemap(tilemap`nivel1`)
 scene.cameraFollowSprite(nena)
 setNPCLocation()
-tiles.placeOnTile(nena, tiles.getTileLocation(7, 2))
+tiles.placeOnTile(nena, tiles.getTileLocation(6, 2))
 nena.setStayInScreen(false)
 let preu = [
 6,
