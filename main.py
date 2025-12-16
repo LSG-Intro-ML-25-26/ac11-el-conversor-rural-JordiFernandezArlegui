@@ -394,23 +394,30 @@ def on_left_pressed():
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
 def on_on_overlap(sprite2, otherSprite):
+    global multiplicador_array
+    if nena.overlaps_with(NPCs[0]):
+        multiplicador_array = 0
+    else:
+        if nena.overlaps_with(NPCs[1]):
+            multiplicador_array = 1
+        else:
+            multiplicador_array = 2
     if controller.A.is_pressed():
         music.play(music.melody_playable(music.jump_up),
             music.PlaybackMode.IN_BACKGROUND)
         music.set_volume(120)
-        if game.ask("Vols  " + "" + ("s? Tinc " + "")):
-            pass
+        if game.ask("Vols " + NPC_inventari[2 * multiplicador_array] + ("? Tinc " + NPC_inventari[2 * multiplicador_array + 1])):
+            if game.ask_for_number("Digue'm, quants vols?", 2) <= parse_float(NPC_inventari[2 * multiplicador_array + 1]):
+                game.splash("Genial! Aquí tens!")
+            else:
+                game.splash("!?")
+                game.splash("Com vols que et doni més\ndel que tinc!?")
+                game.splash("Vete a la ciudad!")
         else:
-            pass
-        if controller.B.is_pressed():
-            game.show_long_text("Oh... Una pena... Ens veiem!", DialogLayout.BOTTOM)
+            game.show_long_text("Oh... Una pena...\\nEns veiem!", DialogLayout.BOTTOM)
             music.play(music.melody_playable(music.jump_down),
                 music.PlaybackMode.IN_BACKGROUND)
             music.set_volume(120)
-            pause(100)
-        music.play(music.melody_playable(music.jump_down),
-            music.PlaybackMode.IN_BACKGROUND)
-        music.set_volume(120)
         pause(100)
 sprites.on_overlap(SpriteKind.player, SpriteKind.NPC, on_on_overlap)
 
@@ -483,9 +490,10 @@ def on_up_pressed():
             100,
             True)
 controller.up.on_event(ControllerButtonEvent.PRESSED, on_up_pressed)
-NPC_inventari: List[str] = []
 
 def setNPCInventari():
+    global lista
+    lista = 0
     for index in range(3):
         if 0 == 0 % 1:
             NPC_inventari.append(producte._pick_random())
@@ -493,6 +501,7 @@ def setNPCInventari():
         else:
             NPC_inventari.append("llenya")
             NPC_inventari.append(convert_to_text(randint(1, 10)))
+    return NPC_inventari
 
 def on_down_released():
     if controller.up.is_pressed():
@@ -694,6 +703,9 @@ def on_up_released():
             False)
 controller.up.on_event(ControllerButtonEvent.RELEASED, on_up_released)
 
+lista = 0
+multiplicador_array = 0
+NPC_inventari: List[str] = []
 producte: List[str] = []
 nena: Sprite = None
 NPCs: List[Sprite] = []
@@ -894,8 +906,8 @@ tiles.place_on_tile(nena, tiles.get_tile_location(6, 2))
 nena.set_stay_in_screen(False)
 preu = [6, 2, 5, 3, 12]
 cantitat = [1, 1.5, 12, 1]
-producte = ["gallina", "patata", "cabra", "ou", "cavall"]
-setNPCInventari()
+producte = ["gallines", "patates", "cabres", "ous", "cavalls"]
+NPC_inventari = setNPCInventari()
 
 def on_forever():
     if controller.down.is_pressed():

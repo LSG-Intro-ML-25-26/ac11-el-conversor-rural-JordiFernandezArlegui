@@ -426,22 +426,24 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC, function (sprite2, otherSprite) {
     if (nena.overlapsWith(NPCs[0])) {
         multiplicador_array = 0
+    } else if (nena.overlapsWith(NPCs[1])) {
+        multiplicador_array = 1
     } else {
-        if (nena.overlapsWith(NPCs[1])) {
-            multiplicador_array = 1
-        } else {
-            multiplicador_array = 2
-        }
+        multiplicador_array = 2
     }
     if (controller.A.isPressed()) {
         music.play(music.melodyPlayable(music.jumpUp), music.PlaybackMode.InBackground)
         music.setVolume(120)
-        if (game.ask("Vols  " + NPC_inventari[2 * multiplicador_array] + ("? Tinc " + NPC_inventari[2 * multiplicador_array + 1]))) {
-        	
+        if (game.ask("Vols " + NPC_inventari[2 * multiplicador_array] + ("? Tinc " + NPC_inventari[2 * multiplicador_array + 1]))) {
+            if (game.askForNumber("Digue'm, quants vols?", 2) <= parseFloat(NPC_inventari[2 * multiplicador_array + 1])) {
+                game.splash("Genial! Aquí tens!")
+            } else {
+                game.splash("!?")
+                game.splash(`Com vols que et doni més
+del que tinc!?`)
+                game.splash("Vete a la ciudad!")
+            }
         } else {
-        	
-        }
-        if (controller.B.isPressed()) {
             game.showLongText("Oh... Una pena...\\nEns veiem!", DialogLayout.Bottom)
             music.play(music.melodyPlayable(music.jumpDown), music.PlaybackMode.InBackground)
             music.setVolume(120)
