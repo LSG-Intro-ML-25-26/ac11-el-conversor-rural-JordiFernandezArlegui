@@ -12,22 +12,20 @@ controller.right.onEvent(ControllerButtonEvent.Released, function () {
                 true
                 )
             }
+        } else if (controller.down.isPressed()) {
+            animation.runImageAnimation(
+            nena,
+            assets.animation`nena-animation-down`,
+            100,
+            true
+            )
         } else {
-            if (controller.down.isPressed()) {
-                animation.runImageAnimation(
-                nena,
-                assets.animation`nena-animation-down`,
-                100,
-                true
-                )
-            } else {
-                animation.runImageAnimation(
-                nena,
-                assets.animation`nena-animation-left`,
-                100,
-                true
-                )
-            }
+            animation.runImageAnimation(
+            nena,
+            assets.animation`nena-animation-left`,
+            100,
+            true
+            )
         }
     } else if (controller.up.isPressed()) {
         if (controller.down.isPressed()) {
@@ -106,22 +104,20 @@ controller.left.onEvent(ControllerButtonEvent.Released, function () {
                 true
                 )
             }
+        } else if (controller.up.isPressed()) {
+            animation.runImageAnimation(
+            nena,
+            assets.animation`nena-animation-up`,
+            100,
+            true
+            )
         } else {
-            if (controller.up.isPressed()) {
-                animation.runImageAnimation(
-                nena,
-                assets.animation`nena-animation-up`,
-                100,
-                true
-                )
-            } else {
-                animation.runImageAnimation(
-                nena,
-                assets.animation`nena-animation-right`,
-                100,
-                true
-                )
-            }
+            animation.runImageAnimation(
+            nena,
+            assets.animation`nena-animation-right`,
+            100,
+            true
+            )
         }
     } else if (controller.up.isPressed()) {
         if (controller.down.isPressed()) {
@@ -510,22 +506,20 @@ controller.down.onEvent(ControllerButtonEvent.Released, function () {
                 true
                 )
             }
+        } else if (controller.right.isPressed()) {
+            animation.runImageAnimation(
+            nena,
+            assets.animation`nena-animation-right`,
+            100,
+            true
+            )
         } else {
-            if (controller.right.isPressed()) {
-                animation.runImageAnimation(
-                nena,
-                assets.animation`nena-animation-right`,
-                100,
-                true
-                )
-            } else {
-                animation.runImageAnimation(
-                nena,
-                assets.animation`nena-animation-up`,
-                100,
-                true
-                )
-            }
+            animation.runImageAnimation(
+            nena,
+            assets.animation`nena-animation-up`,
+            100,
+            true
+            )
         }
     } else if (controller.left.isPressed()) {
         if (controller.right.isPressed()) {
@@ -621,39 +615,37 @@ controller.up.onEvent(ControllerButtonEvent.Released, function () {
                 true
                 )
             }
+        } else if (controller.right.isPressed()) {
+            animation.runImageAnimation(
+            nena,
+            assets.animation`nena-animation-right`,
+            100,
+            true
+            )
         } else {
-            if (controller.right.isPressed()) {
-                animation.runImageAnimation(
-                nena,
-                assets.animation`nena-animation-right`,
-                100,
-                true
-                )
-            } else {
-                animation.runImageAnimation(
-                nena,
-                [img`
-                    . f f f . f f f f . f f f . 
-                    f f f f f c c c c f f f f f 
-                    f f f f b c c c c b f f f f 
-                    f f f c 3 c c c c 3 c f f f 
-                    . f 3 3 c c c c c c 3 3 f . 
-                    . f c c c c 4 4 c c c c f . 
-                    . f f c c 4 4 4 4 c c f f . 
-                    . f f f b f 4 4 f b f f f . 
-                    . f f 4 1 f d d f 1 4 f f . 
-                    . . f f d d d d d d f f . . 
-                    . . e f e 4 4 4 4 e f e . . 
-                    . e 4 f b 3 3 3 3 b f 4 e . 
-                    . 4 d f 3 3 3 3 3 3 c d 4 . 
-                    . 4 4 f 6 6 6 6 6 6 f 4 4 . 
-                    . . . . f f f f f f . . . . 
-                    . . . . f f . . f f . . . . 
-                    `],
-                0,
-                true
-                )
-            }
+            animation.runImageAnimation(
+            nena,
+            [img`
+                . f f f . f f f f . f f f . 
+                f f f f f c c c c f f f f f 
+                f f f f b c c c c b f f f f 
+                f f f c 3 c c c c 3 c f f f 
+                . f 3 3 c c c c c c 3 3 f . 
+                . f c c c c 4 4 c c c c f . 
+                . f f c c 4 4 4 4 c c f f . 
+                . f f f b f 4 4 f b f f f . 
+                . f f 4 1 f d d f 1 4 f f . 
+                . . f f d d d d d d f f . . 
+                . . e f e 4 4 4 4 e f e . . 
+                . e 4 f b 3 3 3 3 b f 4 e . 
+                . 4 d f 3 3 3 3 3 3 c d 4 . 
+                . 4 4 f 6 6 6 6 6 6 f 4 4 . 
+                . . . . f f f f f f . . . . 
+                . . . . f f . . f f . . . . 
+                `],
+            0,
+            true
+            )
         }
     } else if (controller.left.isPressed()) {
         if (controller.right.isPressed()) {
@@ -868,8 +860,23 @@ tiles.setTilemap(tilemap`airport`)
 scene.cameraFollowSprite(nena)
 nena.setStayInScreen(false)
 tiles.placeOnTile(npc1, tiles.getTileLocation(3, 2))
-let gallina = 6
-let _15_patata = 2
-let cabra = 5
-let _12_ous = 3
-let cavall = 12
+let preu = [
+6,
+2,
+5,
+3,
+12
+]
+let cantitat = [
+1,
+1.5,
+12,
+1
+]
+let producte = [
+"gallina",
+"patata",
+"cabra",
+"ou",
+"cavall"
+]
