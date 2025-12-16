@@ -859,7 +859,8 @@ scene.setBackgroundImage(img`
 tiles.setTilemap(tilemap`airport`)
 scene.cameraFollowSprite(nena)
 nena.setStayInScreen(false)
-tiles.placeOnTile(npc1, tiles.getTileLocation(3, 2))
+tiles.placeOnTile(npc1, tiles.getTileLocation(2, 1))
+tiles.placeOnTile(nena, tiles.getTileLocation(7, 2))
 let preu = [
 6,
 2,
