@@ -393,25 +393,37 @@ def on_left_pressed():
             True)
 controller.left.on_event(ControllerButtonEvent.PRESSED, on_left_pressed)
 
+def on_b_pressed():
+    game.splash("Tu inventario es:\n" + ("" + str(PlayerInventoryLlenya) + " llenya"))
+controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
+
 def on_on_overlap(sprite2, otherSprite):
-    global multiplicador_array
+    global multiplicador_array, input2, PlayerInventoryLlenya
     if nena.overlaps_with(NPCs[0]):
         multiplicador_array = 0
+    elif nena.overlaps_with(NPCs[1]):
+        multiplicador_array = 1
     else:
-        if nena.overlaps_with(NPCs[1]):
-            multiplicador_array = 1
-        else:
-            multiplicador_array = 2
+        multiplicador_array = 2
     if controller.A.is_pressed():
         music.play(music.melody_playable(music.jump_up),
             music.PlaybackMode.IN_BACKGROUND)
         music.set_volume(120)
         if game.ask("Vols " + NPC_inventari[2 * multiplicador_array] + ("? Tinc " + NPC_inventari[2 * multiplicador_array + 1])):
-            if game.ask_for_number("Digue'm, quants vols?", 2) <= parse_float(NPC_inventari[2 * multiplicador_array + 1]):
-                game.splash("Genial! Aquí tens!")
+            input2 = game.ask_for_number("Digue'm, quants vols?", 2)
+            if input2 <= parse_float(NPC_inventari[2 * multiplicador_array + 1]):
+                if PlayerInventoryLlenya >= input2:
+                    game.splash("Genial! Aquí tens!")
+                    PlayerInventoryLlenya += PlayerInventoryLlenya - input2
+                else:
+                    game.splash("Surt d'aquí pobre!")
+                    game.splash("Torna quan puguis pagar el que vols!")
             else:
                 game.splash("!?")
-                game.splash("Com vols que et doni més\ndel que tinc!?")
+                game.splash("""
+                    Com vols que et doni més
+                    del que tinc!?
+                    """)
                 game.splash("Vete a la ciudad!")
         else:
             game.show_long_text("Oh... Una pena...\\nEns veiem!", DialogLayout.BOTTOM)
@@ -704,7 +716,9 @@ def on_up_released():
 controller.up.on_event(ControllerButtonEvent.RELEASED, on_up_released)
 
 lista = 0
+input2 = 0
 multiplicador_array = 0
+PlayerInventoryLlenya = 0
 NPC_inventari: List[str] = []
 producte: List[str] = []
 nena: Sprite = None
@@ -908,6 +922,8 @@ preu = [6, 2, 5, 3, 12]
 cantitat = [1, 1.5, 12, 1]
 producte = ["gallines", "patates", "cabres", "ous", "cavalls"]
 NPC_inventari = setNPCInventari()
+PlayerInventory: List[number] = []
+PlayerInventoryLlenya = 100
 
 def on_forever():
     if controller.down.is_pressed():
