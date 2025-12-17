@@ -437,10 +437,14 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function comprar () {
-    PlayerInventory.push(NPC_inventari[i1])
-    PlayerInventory.push(convertToText(input2))
-    indiceListas = producte2.indexOf(NPC_inventari[i1])
-    PlayerInventoryLlenya += 0 - input2 / cantitat[indiceListas] * preu[indiceListas]
+    if (PlayerInventory.indexOf(NPC_inventari[i1]) >= 0) {
+        PlayerInventory[PlayerInventory.indexOf(NPC_inventari[i1]) + 1] = convertToText(parseFloat(PlayerInventory[PlayerInventory.indexOf(NPC_inventari[i1]) + 1]) + input2)
+    } else {
+        PlayerInventory.push(NPC_inventari[i1])
+        PlayerInventory.push(convertToText(input2))
+        indiceListas = producte2.indexOf(NPC_inventari[i1])
+        PlayerInventoryLlenya += 0 - input2 / cantitat[indiceListas] * preu[indiceListas]
+    }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC, function (sprite2, otherSprite) {
     if (nena.overlapsWith(NPCs[0])) {
@@ -477,9 +481,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC, function (sprite2, otherSpr
             } else {
                 game.showLongText("Oh... Una pena...\\nEns veiem!", DialogLayout.Bottom)
             }
-            pause(100)
         }
     }
+    pause(100)
     music.play(music.melodyPlayable(music.jumpDown), music.PlaybackMode.InBackground)
     music.setVolume(120)
 })
