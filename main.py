@@ -411,14 +411,16 @@ def on_b_pressed():
 controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
 
 def comprar():
-    global indiceListas, PlayerInventoryLlenya
-    PlayerInventory.append(NPC_inventari[i1])
-    PlayerInventory.append(convert_to_text(input2))
-    indiceListas = producte2.index_of(NPC_inventari[i1])
-    PlayerInventoryLlenya += 0 - input2 / cantitat[indiceListas] * preu[indiceListas]
+    global PlayerInventoryLlenya
+    if PlayerInventory.index_of(NPC_inventari[i1]) >= 0:
+        PlayerInventory[PlayerInventory.index_of(NPC_inventari[i1]) + 1] = convert_to_text(parse_float(PlayerInventory[PlayerInventory.index_of(NPC_inventari[i1]) + 1]) + input2)
+    else:
+        PlayerInventory.append(NPC_inventari[i1])
+        PlayerInventory.append(convert_to_text(input2))
+        PlayerInventoryLlenya -= input2 * preu[indiceListas] / cantitat[indiceListas]
 
 def on_on_overlap(sprite2, otherSprite):
-    global multiplicador_array, i1, i2, input2
+    global multiplicador_array, i1, i2, input2, indiceListas
     if nena.overlaps_with(NPCs[0]):
         multiplicador_array = 0
     elif nena.overlaps_with(NPCs[1]):
@@ -432,25 +434,30 @@ def on_on_overlap(sprite2, otherSprite):
         i1 = 2 * multiplicador_array
         i2 = i1 + 1
         if parse_float(NPC_inventari[i2]) <= 0:
-            game.splash("Ho sento, ja no em queda res!")
-        else:
-            if game.ask("Vols " + NPC_inventari[i1] + ("? Tinc " + NPC_inventari[i2])):
-                input2 = game.ask_for_number("Digue'm, quants vols?", 2)
-                if input2 > parse_float(NPC_inventari[i2]) or input2 % 1 != 0:
-                    if input2 % 1 != 0:
-                        game.splash("No ho dividiré a troços!")
-                    else:
-                        game.splash("Aclara't!")
-                elif PlayerInventoryLlenya >= input2:
-                    game.splash("Genial! Aquí tens!")
-                    comprar()
-                    vendre()
+            game.splash("Ja no em queda res!")
+        elif game.ask("Vols " + NPC_inventari[i1] + ("? Tinc " + NPC_inventari[i2])):
+            input2 = game.ask_for_number("Digue'm, quants vols?", 2)
+            indiceListas = producte2.index_of(NPC_inventari[i1])
+            if input2 > parse_float(NPC_inventari[i2]) or input2 % 1 != 0 or input2 <= 0:
+                if input2 % 1 != 0:
+                    game.splash("No ho dividiré a troços!")
+                elif input2 <= 0:
+                    game.splash("""
+                        Com vols que et dongui
+                        "res"?
+                        """)
                 else:
-                    game.splash("Surt d'aquí pobre!")
-                    game.splash("Torna quan puguis pagar el que vols!")
+                    game.splash("Aclara't!")
+            elif PlayerInventoryLlenya >= Math.round(input2 * preu[indiceListas] / cantitat[indiceListas]/100)*100:
+                game.splash("Genial! Aquí tens!")
+                comprar()
+                vendre()
             else:
-                game.show_long_text("Oh... Una pena...\\nEns veiem!", DialogLayout.BOTTOM)
-            pause(100)
+                game.splash("Surt d'aquí pobre!")
+                game.splash("Torna quan puguis pagar el que vols!")
+        else:
+            game.show_long_text("Oh... Una pena...\\nEns veiem!", DialogLayout.BOTTOM)
+    pause(100)
     music.play(music.melody_playable(music.jump_down),
         music.PlaybackMode.IN_BACKGROUND)
     music.set_volume(120)
@@ -954,8 +961,8 @@ tiles.place_on_tile(nena, tiles.get_tile_location(6, 2))
 nena.set_stay_in_screen(False)
 preu = [6, 2, 5, 3, 12]
 cantitat = [1, 1.5, 1, 12, 1]
-producte2 = ["gallines", "kg de patates", "cabres", "ous", "cavalls"]
-PlayerInventoryLlenya = 100
+producte2 = ["gallines", "patates kg", "cabres", "ous", "cavalls"]
+PlayerInventoryLlenya = 10
 NPC_inventari = setNPCInventari()
 PlayerInventory = []
 
