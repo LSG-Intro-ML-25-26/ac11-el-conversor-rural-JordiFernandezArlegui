@@ -178,6 +178,13 @@ def on_left_released():
             False)
 controller.left.on_event(ControllerButtonEvent.RELEASED, on_left_released)
 
+def vendre():
+    global NPC_inventari, i2, input2
+    quantitat_actual = parse_float(NPC_inventari[i2])
+    quantitat_nova = quantitat_actual - input2
+    NPC_inventari[i2] = convert_to_text(quantitat_nova)
+
+
 def on_down_pressed():
     if controller.up.is_pressed():
         if controller.left.is_pressed():
@@ -404,8 +411,15 @@ def on_b_pressed():
         i += 2
 controller.B.on_event(ControllerButtonEvent.PRESSED, on_b_pressed)
 
+def comprar():
+    global indiceListas, PlayerInventoryLlenya
+    PlayerInventory.append(NPC_inventari[i1])
+    PlayerInventory.append(convert_to_text(input2))
+    indiceListas = producte2.index_of(NPC_inventari[i1])
+    PlayerInventoryLlenya += 0 - input2 / cantitat[indiceListas] * preu[indiceListas]
+
 def on_on_overlap(sprite2, otherSprite):
-    global multiplicador_array, i1, i2, input2, indiceListas, PlayerInventoryLlenya
+    global multiplicador_array, i1, i2, input2
     if nena.overlaps_with(NPCs[0]):
         multiplicador_array = 0
     elif nena.overlaps_with(NPCs[1]):
@@ -423,19 +437,15 @@ def on_on_overlap(sprite2, otherSprite):
             if input2 > parse_float(NPC_inventari[i2]) or input2 % 1 != 0:
                 if input2 % 1 != 0:
                     game.splash("No ho dividiré a troços!")
-                    pass
                 else:
                     game.splash("Aclara't!")
+            elif PlayerInventoryLlenya >= input2:
+                game.splash("Genial! Aquí tens!")
+                comprar()
+                vendre()
             else:
-                if PlayerInventoryLlenya >= input2:
-                    game.splash("Genial! Aquí tens!")
-                    PlayerInventory.append(NPC_inventari[i1])
-                    PlayerInventory.append(convert_to_text(input2))
-                    indiceListas = producte2.index_of(NPC_inventari[i1])
-                    PlayerInventoryLlenya += 0 - input2 / cantitat[indiceListas] * preu[indiceListas]
-                else:
-                    game.splash("Surt d'aquí pobre!")
-                    game.splash("Torna quan puguis pagar el que vols!")
+                game.splash("Surt d'aquí pobre!")
+                game.splash("Torna quan puguis pagar el que vols!")
         else:
             game.show_long_text("Oh... Una pena...\\nEns veiem!", DialogLayout.BOTTOM)
             music.play(music.melody_playable(music.jump_down),
@@ -727,11 +737,11 @@ def on_up_released():
 controller.up.on_event(ControllerButtonEvent.RELEASED, on_up_released)
 
 lista = 0
+i2 = 0
+multiplicador_array = 0
 indiceListas = 0
 input2 = 0
-i2 = 0
 i1 = 0
-multiplicador_array = 0
 i = 0
 NPC_inventari: List[str] = []
 PlayerInventoryLlenya = 0
