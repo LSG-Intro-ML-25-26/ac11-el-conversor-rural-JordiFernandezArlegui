@@ -417,7 +417,7 @@ def comprar():
     else:
         PlayerInventory.append(NPC_inventari[i1])
         PlayerInventory.append(convert_to_text(input2))
-        PlayerInventoryLlenya -= input2 * preu[indiceListas] / cantitat[indiceListas]
+    PlayerInventoryLlenya += 0 - input2 * preu[indiceListas] / cantitat[indiceListas]
 
 def on_on_overlap(sprite2, otherSprite):
     global multiplicador_array, i1, i2, input2, indiceListas
@@ -438,6 +438,7 @@ def on_on_overlap(sprite2, otherSprite):
         elif game.ask("Vols " + NPC_inventari[i1] + ("? Tinc " + NPC_inventari[i2])):
             input2 = game.ask_for_number("Digue'm, quants vols?", 2)
             indiceListas = producte2.index_of(NPC_inventari[i1])
+            cost = Math.round(input2 * (preu[indiceListas]*100 / cantitat[indiceListas]*100) / 10000)
             if input2 > parse_float(NPC_inventari[i2]) or input2 % 1 != 0 or input2 <= 0:
                 if input2 % 1 != 0:
                     game.splash("No ho dividiré a troços!")
@@ -448,7 +449,7 @@ def on_on_overlap(sprite2, otherSprite):
                         """)
                 else:
                     game.splash("Aclara't!")
-            elif PlayerInventoryLlenya >= Math.round(input2 * preu[indiceListas] / cantitat[indiceListas]/100)*100:
+            elif PlayerInventoryLlenya >= cost:
                 game.splash("Genial! Aquí tens!")
                 comprar()
                 vendre()
@@ -457,10 +458,17 @@ def on_on_overlap(sprite2, otherSprite):
                 game.splash("Torna quan puguis pagar el que vols!")
         else:
             game.show_long_text("Oh... Una pena...\\nEns veiem!", DialogLayout.BOTTOM)
-    pause(100)
-    music.play(music.melody_playable(music.jump_down),
-        music.PlaybackMode.IN_BACKGROUND)
-    music.set_volume(120)
+    if 0 == PlayerInventoryLlenya:
+        game.show_long_text("FELICITATS!", DialogLayout.FULL)
+        game.show_long_text("HAS GUANYAT!", DialogLayout.FULL)
+        game.show_long_text("Ets un fraca sense un sol duro!", DialogLayout.FULL)
+        game.show_long_text("*FI DEL JOC*", DialogLayout.FULL)
+        game.reset()
+    else:
+        pause(100)
+        music.play(music.melody_playable(music.jump_down),
+            music.PlaybackMode.IN_BACKGROUND)
+        music.set_volume(120)
 sprites.on_overlap(SpriteKind.player, SpriteKind.NPC, on_on_overlap)
 
 def on_up_pressed():
@@ -965,6 +973,7 @@ producte2 = ["gallines", "patates kg", "cabres", "ous", "cavalls"]
 PlayerInventoryLlenya = 10
 NPC_inventari = setNPCInventari()
 PlayerInventory = []
+game.show_long_text("Consegueix quedar-te sense un sol duro!", DialogLayout.FULL)
 
 def on_forever():
     if controller.down.is_pressed():
